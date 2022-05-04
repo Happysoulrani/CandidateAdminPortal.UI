@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "candidateadminportal-ui": {
+    "candidateadminportals-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/candidateadminportal-ui",
+            "outputPath": "dist/candidateadminportals-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/flexboxgrid/dist/flexboxgrid.min.css",
               "src/styles.css"
+
             ],
             "scripts": []
           },
@@ -68,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "candidateadminportal-ui:build:production"
+              "browserTarget": "candidateadminportals-ui:build:production"
             },
             "development": {
-              "browserTarget": "candidateadminportal-ui:build:development"
+              "browserTarget": "candidateadminportals-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "candidateadminportal-ui:build"
+            "browserTarget": "candidateadminportals-ui:build"
           }
         },
         "test": {
@@ -94,6 +97,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "candidateadminportal-ui"
+  "defaultProject": "candidateadminportals-ui"
 }
