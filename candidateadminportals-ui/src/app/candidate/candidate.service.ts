@@ -10,10 +10,14 @@ export class CandidateService {
   private baseApiUrl ='https://localhost:44322';
 
   constructor(private httpClient: HttpClient) { }
-  getCandidate():Observable<Candidate[]>
+  getCandidates(): Observable<Candidate[]>
   {
 
-  return this.httpClient.get<Candidate[]>(this.baseApiUrl + '/candidate')
+  return this.httpClient.get<Candidate[]>(this.baseApiUrl + '/candidate');
 
+}
+getCandidate(candidateId: string):Observable<Candidate>
+{
+ return  this.httpClient.get<Candidate>(this.baseApiUrl + '/candidate/' + candidateId )
 }
 }

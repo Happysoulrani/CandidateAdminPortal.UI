@@ -13,7 +13,7 @@ import { Candidate } from './models/api.models/candidate.model';
 })
 export class CandidateComponent implements OnInit {
   candidate: Candidate[] = [];
-  displayedColumns: string[] = ['firstName','lastName','email','mobile','gender']
+  displayedColumns: string[] = ['firstName','lastName','email','mobile','gender','edit']
  @ViewChild(MatPaginator) matPaginator!: MatPaginator;
  @ViewChild(MatSort) matSort!: MatSort;
  filterString='';
@@ -23,7 +23,7 @@ export class CandidateComponent implements OnInit {
 
   ngOnInit(): void {
     //fetch candudates
-    this.candidateService.getCandidate()
+    this.candidateService.getCandidates()
     .subscribe(
       (successResponse) => {
         this.candidate = successResponse;

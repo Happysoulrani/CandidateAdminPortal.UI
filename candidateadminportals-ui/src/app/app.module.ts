@@ -50,13 +50,16 @@ import { CandidateComponent } from './candidate/candidate.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ViewComponent } from './view.student/view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
-    CandidateComponent
-  ],
+    CandidateComponent,
+    ViewComponent,
+
+],
   imports: [
     FormsModule,
     BrowserModule,
