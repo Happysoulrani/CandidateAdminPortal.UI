@@ -65,8 +65,11 @@
         <div class="col-xs-12">
           <mat-form-field appearance="outline">
             <mat-label>Gender</mat-label>
-            <input type="text" matInput [(ngModel)]="candidate.gender.description" name="gender" required>
-
+            <mat-select [(ngModel)]="candidate.genderId" name="gender" required>
+             <mat-option *ngFor="let gender of genderList"[value]="gender.id">
+              {{ gender.description}}
+             </mat-option>
+            </mat-select>
             <mat-error>Gender is a required field</mat-error>
           </mat-form-field>
         </div>
@@ -74,15 +77,22 @@
       <div class="row">
         <div class="col-xs-12">
           <mat-form-field appearance="outline">
-            <mat-label>Physical Address</mat-label>
-            <textarea matInput [(ngModel)]="candidate.address.permanentAddress" name="physicalAddress"
+            <mat-label>PermanentAddress</mat-label>
+            <textarea matInput [(ngModel)]="candidate.address.permanentAddress" name="permanentAddress"
               required></textarea>
-            <mat-error>Physical Address is a required field</mat-error>
+            <mat-error>permanentAddress Address is a required field</mat-error>
           </mat-form-field>
         </div>
+
+
+
+
+
+
       </div>
-
-
+<div class="col-xs-12">
+  <button mat-raised-button="primary" (click)="onUpdate()">Save</button>
+</div>
   </form>
 </div>
 </div>

@@ -1,8 +1,11 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { CandidateService } from '../candidate/candidate.service';
 import { Candidate } from '../candidate/models/api.models/candidate.model';
+import { Gender } from '../candidate/ui.models/gender.model';
+import { GenderService } from '../services/gender.service';
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -21,15 +24,19 @@ export class ViewComponent implements OnInit {
       id: '',
       description: ''
     },
+
+
     address: {
       id: '',
       permanentAddress: ''
     },
-    lastName: ''
+  lastName: ''
   }
-
+   genderList: Gender[] = [];
   constructor(private readonly candidateService:CandidateService,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute,
+    private readonly genderService: GenderService,
+    private snackbar:MatSnackBar){}
 
   ngOnInit(): void {
             this.route.paramMap.subscribe(
@@ -45,12 +52,37 @@ export class ViewComponent implements OnInit {
         (successResponse) => {
         this.candidate = successResponse;
       }
-            );
+    );
+this.genderService.getGenderList()
+     .subscribe
+     (
+       (successResponse) => {
+         console.log(successResponse);
+         this.genderList = successResponse;
+       }
+     );
     }
         }
         );
       }
-    }
+      onUpdate(): void
+      {
+        this.candidateService.updateCandidate(this.candidate.id,this.candidate)
+        //call studentservice to update student
+      .subscribe(
+        (successResponse) => {
+         this.snackbar.open('candidate updated successfully',undefined,{
+         duration:2000});
+    //show a notification
+        },
+        (errorResponse) => {
+
+        }
+
+      );
+      }
+
+}
 
 
 
